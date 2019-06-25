@@ -1,5 +1,9 @@
 import React from 'react';
-import './App.css';
+
+//make sure reset.css is imported first
+import './css/reset.css';
+import './css/style.css';
+import './css/resty.css';
 
 import Header from './components/header';
 import Form from './components/form';
@@ -12,16 +16,21 @@ class App extends React.Component {
     super(props);
     this.state = {
       url:[],
+      data:{
+        headers: {},
+        body: {},
+      },
     };
   }
 
   //an arrow function binds to contextual this
   //a normal function will not
-  shareData = (data) => {
-    // console.log('this is data', data);
-    let arr = this.state.url.concat(data);
+  shareData = (userInput, apiData) => {
+    
+    let arr = this.state.url.concat(userInput);
     this.setState({url: arr});
-   
+    this.setState({data: apiData});
+    console.log('this is apiData', this.state.data);
     console.log('this is this.state.url', this.state.url);
     
   }
@@ -33,7 +42,7 @@ class App extends React.Component {
     {/*added a share property to the Form component*/}
     <Form share={this.shareData}/>
     <History urlData={this.state.url}/>
-    <Output/>
+    <Output outputData={this.state.data}/>
     <Footer/>
     </>
     );

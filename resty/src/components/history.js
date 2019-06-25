@@ -6,12 +6,13 @@ class History extends React.Component {
         super(props);
     }
 
+    //don't forget to add id="history" to ul when finished
     render(){
         return (
             <ul>
                 {this.props.urlData.map((url, idx) => {
                     return (
-                        <li key={idx}>
+                        <li key={idx} >
                             <p>GET</p>
                             <p>{url}</p>
                         </li>

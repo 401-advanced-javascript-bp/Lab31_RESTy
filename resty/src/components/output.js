@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactJson from 'react-json-view';
 
 class Output extends React.Component {
     constructor(props) {
@@ -7,9 +8,21 @@ class Output extends React.Component {
 
     render(){
         return (
-            <div>
-                <p>This is the Output section.</p>
-            </div>
+          <>
+          <ReactJson
+            name="Headers"
+            enableClipboard={false}
+            collapsed={true}
+            src={this.props.outputData.headers}
+          />
+          <ReactJson
+            name="Response"
+            enableClipboard={false}
+            collapsed={false}
+            src={this.props.outputData.body}
+          />
+          </>
+
         )
     }
 }
